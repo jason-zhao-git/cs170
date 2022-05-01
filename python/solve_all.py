@@ -21,6 +21,7 @@ from solution import Solution
 # YOUR CODE HERE
 from solve import solve_naive
 from solve import solve_greedy
+from solve import solve_random
 
 class Size(enum.Enum):
     SMALL = "small"
@@ -32,11 +33,21 @@ def solver(size: Size, instance: Instance) -> Solution:
     # Modify this function to use your imported solvers.
     # YOUR CODE HERE
     if size == Size.SMALL:
-        return solve_greedy(instance)
+        return best_solve(instance, 20)
     elif size == Size.MEDIUM:
-        return solve_greedy(instance)
+        return best_solve(instance, 20)
     elif size == Size.LARGE:
-        return solve_greedy(instance)
+        return best_solve(instance, 20)
+
+def best_solve(instance:Instance, iter: int = 10):
+    best_solution = solve_greedy(instance)
+    best_penalty = best_solution.penalty()
+    for _ in range(iter):
+        sol = solve_random(instance)
+        p = sol.penalty()
+        if p < best_penalty:
+            best_solution = sol
+    return best_solution
 
 
 # You shouldn't need to modify anything below this line.
