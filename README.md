@@ -2,9 +2,9 @@
 
 ## Overview 
 
-This project submission was built off the provided CS170 Project Skeleton. The algorithm implemented utilizes a greedy approach with tie-breaking optimizations to determine tower placements that aim to minimize total penalty accumulated.
+This project submission was built off the provided [`CS170 Project Skeleton`](https://github.com/Berkeley-CS170/project-sp22-skeleton). The algorithm implemented utilizes a greedy approach with tie-breaking optimizations to determine tower placements that aim to minimize total penalty accumulated.
 
-Contributors: Andrew Tran, Elizabeth Yeh, Jason Zhao
+_Contributors: Andrew Tran, Elizabeth Yeh, Jason Zhao_
 
 ## Modifications
 
@@ -26,3 +26,4 @@ The code at [`python/solve_all.py`] has already been modified to use solve_greed
 python3 python/solve_all.py inputs outputs
 ```
 in the root directory.
+
