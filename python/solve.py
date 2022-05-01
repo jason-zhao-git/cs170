@@ -114,32 +114,31 @@ def solve_greedy(instance: Instance) -> Solution:
  
 def solve_random(instance: Instance, varim: float = 0.75, varip:float = 1.2) -> Solution:
     # find index of the max value in service matrix
-    def get_max_tower_rand(dim):
+    def get_max_tower_rand(dim, towers):
         max_tower = [Point(0, 0)]
         max_val = 0
         for i in range(dim):
             for j in range(dim):
                 if service_matrix[i][j] > max_val:
                     max_val = service_matrix[i][j]
-        lower = int(varim * max_val)
-        if lower == 0:
-            lower = lower + 1
+        lower = int(varim * max_val) + 1
+        
         for i in range(dim):
             for j in range(dim):
-                if service_matrix[i][j] >= lower:
+                if service_matrix[i][j] >= lower and Point(i, j) not in towers:
                     max_tower.append(Point(i, j))
         return max_tower
     
-    def get_minp_tower_rand(towerlist):
+    def get_minp_tower_rand(towerlist, towers):
         min = INFINITY
         min_t = [towerlist[0]]
         for t in towerlist:
             x = t.x
             y = t.y
-            if penalty_matrix[x][y] < min:
+            if penalty_matrix[x][y] < min and t not in towers:
                 min = penalty_matrix[x][y]
                 min_t = [t]
-            elif penalty_matrix[x][y] == min:
+            elif penalty_matrix[x][y] == min and t not in towers:
                 min_t.append(t)
         return min_t
 
@@ -192,8 +191,8 @@ def solve_random(instance: Instance, varim: float = 0.75, varip:float = 1.2) -> 
     update_service(cities, r, 1)
  
     while len(cities) > 0:
-        max_towers = get_max_tower_rand(dim)
-        minp_tower = random.choice(get_minp_tower_rand(max_towers))
+        max_towers = get_max_tower_rand(dim, towers)
+        minp_tower = random.choice(get_minp_tower_rand(max_towers, towers))
         towers.append(minp_tower)
         update_penalty(r_p, minp_tower)
         covered = get_cities_covered(minp_tower, cities, r, dim)
