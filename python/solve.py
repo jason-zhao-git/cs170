@@ -112,10 +112,10 @@ def solve_greedy(instance: Instance) -> Solution:
         towers=towers
     )
  
-def solve_random(instance: Instance, varim: float = 0.75, varip:float = 1.2) -> Solution:
+def solve_random(instance: Instance, varim: float = 0.70, varip:float = 1.3) -> Solution:
     # find index of the max value in service matrix
     def get_max_tower_rand(dim, towers):
-        max_tower = [Point(0, 0)]
+        max_tower = []
         max_val = 0
         for i in range(dim):
             for j in range(dim):
@@ -131,14 +131,16 @@ def solve_random(instance: Instance, varim: float = 0.75, varip:float = 1.2) -> 
     
     def get_minp_tower_rand(towerlist, towers):
         min = INFINITY
-        min_t = [towerlist[0]]
+        min_t = []
         for t in towerlist:
             x = t.x
             y = t.y
             if penalty_matrix[x][y] < min and t not in towers:
                 min = penalty_matrix[x][y]
-                min_t = [t]
-            elif penalty_matrix[x][y] == min and t not in towers:
+        for t in towerlist:
+            x = t.x
+            y = t.y
+            if penalty_matrix[x][y] <= int(varip * min) and t not in towers:
                 min_t.append(t)
         return min_t
 

@@ -33,11 +33,11 @@ def solver(size: Size, instance: Instance) -> Solution:
     # Modify this function to use your imported solvers.
     # YOUR CODE HERE
     if size == Size.SMALL:
-        return best_solve(instance, 20)
+        return best_solve(instance, 30)
     elif size == Size.MEDIUM:
-        return best_solve(instance, 20)
+        return best_solve(instance, 30)
     elif size == Size.LARGE:
-        return best_solve(instance, 20)
+        return best_solve(instance, 30)
 
 def best_solve(instance:Instance, iter: int = 10):
     best_solution = solve_greedy(instance)
