@@ -1,8 +1,10 @@
+Run python3 python/solve_all.py inputs outputs
+
 # Spring 2022 CS170 Project | TeamID 048 
 
 ## Overview 
 
-This project submission was built off the provided [`CS170 Project Skeleton`](https://github.com/Berkeley-CS170/project-sp22-skeleton). The algorithm implemented utilizes a greedy approach with tie-breaking optimizations to determine tower placements that aim to minimize total penalty accumulated.
+This project submission was built off the provided [CS170 Project Skeleton](https://github.com/Berkeley-CS170/project-sp22-skeleton). The algorithm implemented utilizes a greedy approach with tie-breaking optimizations to determine tower placements that aim to minimize total penalty accumulated.
 
 _Contributors: Andrew Tran, Elizabeth Yeh, Jason Zhao_
 
